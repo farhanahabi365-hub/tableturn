@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f6f1">
+    <title>Sign in | TableTurn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="login-layout">
+        <section class="welcome-panel" aria-label="TableTurn restaurant">
+            <img class="welcome-image"
+                 src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1800&q=85"
+                 alt="Warmly lit restaurant dining room ready for service">
+            <div class="image-shade" aria-hidden="true"></div>
+            <a class="brand brand-light" href="/" aria-label="TableTurn home">
+                <span class="brand-mark" aria-hidden="true">T</span>
+                <span>tableturn<span class="brand-period">.</span></span>
+            </a>
+            <div class="welcome-copy">
+                <p class="panel-kicker"><span></span> GOOD SERVICE STARTS HERE</p>
+                <h2>Make room<br>for a <em>better</em><br>kind of busy.</h2>
+                <p class="panel-note">Your floor, your reservations, your evening in rhythm.</p>
+            </div>
+            <p class="image-caption">A little more flow, every service.</p>
+        </section>
+
+        <section class="form-panel" aria-labelledby="login-title">
+            <div class="form-content">
+                <a class="brand brand-mobile" href="/" aria-label="TableTurn home">
+                    <span class="brand-mark" aria-hidden="true">T</span>
+                    <span>tableturn<span class="brand-period">.</span></span>
+                </a>
+                <div class="form-heading">
+                    <p class="eyebrow">YOUR WORKSPACE AWAITS</p>
+                    <h1 id="login-title">Welcome <em>back.</em></h1>
+                    <p class="form-intro">Sign in to settle in for service.</p>
+                </div>
+
+                <form id="loginForm" class="login-form">
+                    <div class="field-group">
+                        <label for="username">Username</label>
+                        <input id="username" name="username" type="text"
+                               autocomplete="username" placeholder="Your username" required>
+                    </div>
+
+                    <div class="field-group">
+                        <div class="label-row">
+                            <label for="password">Password</label>
+                            <button class="text-button" id="togglePassword" type="button" aria-pressed="false">Show</button>
+                        </div>
+                        <input id="password" name="password" type="password"
+                               autocomplete="current-password" placeholder="Enter your password" required>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="remember-option" for="rememberUsername">
+                            <input id="rememberUsername" type="checkbox">
+                            <span>Remember username</span>
+                        </label>
+                        <button class="text-button" id="resetPassword" type="button">Forgot password?</button>
+                    </div>
+
+                    <button class="submit-button" type="submit">
+                        <span>Sign in</span>
+                        <span class="submit-arrow" aria-hidden="true">&#8594;</span>
+                    </button>
+                    <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+                </form>
+
+                <p class="preview-note"><span class="note-dot"></span> Demo login: <strong>manager</strong> / <strong>TableTurn2026!</strong>. Frontend preview only; no secure account session is created.</p>
+                <footer class="form-footer">
+                    <span>TABLETURN / SERVICE DESK</span>
+                    <span>EST. FOR GOOD EVENINGS</span>
+                </footer>
+            </div>
+        </section>
+    </main>
+
+    <main class="workspace-layout" id="workspace" hidden>
+        <header class="workspace-topbar">
+            <a class="brand workspace-brand" href="/" aria-label="TableTurn home">
+                <span class="brand-mark" aria-hidden="true">T</span>
+                <span>tableturn<span class="brand-period">.</span></span>
+            </a>
+            <div class="service-status"><span aria-hidden="true"></span> SERVICE LIVE</div>
+            <div class="workspace-account">
+                <span class="account-name" id="workspaceUsername">Manager</span>
+                <button class="logout-button" id="logoutButton" type="button">Sign out</button>
+            </div>
+        </header>
+
+        <div class="workspace-shell">
+            <nav class="workspace-tabs" aria-label="Restaurant workspace">
+                <button class="workspace-tab is-active" type="button" data-dashboard-tab="overview" aria-selected="true">Overview</button>
+                <button class="workspace-tab" type="button" data-dashboard-tab="booking" aria-selected="false">Book a table</button>
+                <button class="workspace-tab" type="button" data-dashboard-tab="orders" aria-selected="false">Food orders</button>
+                <button class="workspace-tab" type="button" data-dashboard-tab="bills" aria-selected="false">Bills</button>
+            </nav>
+
+            <div class="workspace-content">
+            <section class="dashboard-view" id="dashboard-overview">
+            <section class="workspace-heading">
+                <img class="workspace-food-image"
+                     src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1800&q=85"
+                     alt="A colorful spread of dishes ready to share">
+                <div>
+                    <p class="eyebrow">TABLETURN / SERVICE DESK</p>
+                    <h1>Your service,<br><em>in sync.</em></h1>
+                </div>
+                <button class="refresh-button" id="refreshWorkspace" type="button" aria-label="Refresh workspace data" title="Refresh">
+                    <span aria-hidden="true">&#8635;</span> Refresh
+                </button>
+            </section>
+
+            <section class="workspace-stats" aria-label="Service overview">
+                <div class="stat-item"><span class="stat-value" id="tableCount">--</span><span class="stat-label">TABLES</span></div>
+                <div class="stat-item"><span class="stat-value" id="reservationCount">--</span><span class="stat-label">RESERVATIONS</span></div>
+                <div class="stat-item"><span class="stat-value" id="freeCount">--</span><span class="stat-label">FREE TABLES</span></div>
+            </section>
+
+            <section class="workspace-columns">
+                <article class="workspace-section">
+                    <div class="section-heading">
+                        <h2>Floor tables</h2>
+                        <div class="section-controls">
+                            <span>LIVE STATUS</span>
+                            <button class="add-table-button" id="addTableButton" type="button">+ Add table</button>
+                        </div>
+                    </div>
+                    <form class="table-editor" id="tableEditor" hidden>
+                        <h3 id="tableEditorTitle">Add a table</h3>
+                        <div class="table-editor-fields">
+                            <label for="tableNumberInput">Table number
+                                <input id="tableNumberInput" type="number" min="1" required>
+                            </label>
+                            <label for="tableCapacityInput">Seats
+                                <input id="tableCapacityInput" type="number" min="1" required>
+                            </label>
+                            <label for="tableStatusInput">Status
+                                <select id="tableStatusInput">
+                                    <option value="FREE">Free</option>
+                                    <option value="RESERVED">Reserved</option>
+                                    <option value="OCCUPIED">Occupied</option>
+                                </select>
+                            </label>
+                        </div>
+                        <p class="editor-message" id="tableEditorMessage" role="status" aria-live="polite"></p>
+                        <div class="editor-actions">
+                            <button class="editor-cancel" id="cancelTableEdit" type="button">Cancel</button>
+                            <button class="editor-save" type="submit">Save table</button>
+                        </div>
+                    </form>
+                    <div class="data-list" id="floorList" aria-live="polite"></div>
+                </article>
+                <article class="workspace-section">
+                    <div class="section-heading"><h2>Reservations</h2><span>UPCOMING SERVICE</span></div>
+                    <div class="data-list" id="reservationList" aria-live="polite"></div>
+                </article>
+            </section>
+            <p class="workspace-message" id="workspaceMessage" role="status" aria-live="polite"></p>
+            </section>
+
+            <section class="dashboard-view workflow-view" id="dashboard-booking" hidden>
+                <div class="workflow-heading">
+                    <img class="workflow-photo booking-photo"
+                         src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1500&q=85"
+                         alt="Restaurant dining room prepared for guests">
+                    <div class="workflow-heading-copy">
+                        <p class="eyebrow">RESERVATIONS / NEW</p>
+                        <h1>Book a <em>table.</em></h1>
+                        <p>Choose a free table, then set the guest count and service time.</p>
+                    </div>
+                </div>
+                <form class="workflow-form" id="bookingForm">
+                    <div class="workflow-fields">
+                        <label for="bookingCustomer">Guest name
+                            <input id="bookingCustomer" type="text" autocomplete="name" required>
+                        </label>
+                        <label for="bookingDate">Date
+                            <input id="bookingDate" type="date" required>
+                        </label>
+                        <label for="bookingStart">Start time
+                            <input id="bookingStart" type="time" required>
+                        </label>
+                        <label for="bookingEnd">End time
+                            <input id="bookingEnd" type="time" required>
+                        </label>
+                        <label for="bookingTable">Table / seats / status
+                            <select id="bookingTable" required></select>
+                        </label>
+                        <label for="bookingPartySize">Party size
+                            <input id="bookingPartySize" type="number" min="1" value="1" required>
+                        </label>
+                    </div>
+                    <p class="selection-note" id="bookingTableInfo">Choose a free table to see its seating and status.</p>
+                    <div class="workflow-submit-row">
+                        <p class="workflow-message" id="bookingMessage" role="status" aria-live="polite"></p>
+                        <button class="editor-save" type="submit">Save reservation</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="dashboard-view workflow-view" id="dashboard-orders" hidden>
+                <div class="workflow-heading">
+                    <img class="workflow-photo order-photo"
+                         src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1500&q=85"
+                         alt="Freshly grilled dishes being served">
+                    <div class="workflow-heading-copy">
+                        <p class="eyebrow">KITCHEN / NEW ORDER</p>
+                        <h1>Add food <em>items.</em></h1>
+                        <p>Choose a reserved or occupied table and add each item with quantity and price.</p>
+                    </div>
+                </div>
+                <form class="workflow-form" id="foodOrderForm">
+                    <label class="single-field" for="orderTable">Table
+                        <select id="orderTable" required></select>
+                    </label>
+                    <div class="order-items-heading">
+                        <h2>Food items</h2>
+                        <button class="add-table-button" id="addFoodItem" type="button">+ Add item</button>
+                    </div>
+                    <div class="food-item-list" id="foodItemList"></div>
+                    <div class="order-total-row"><span>Order total</span><strong id="orderTotal">₹0.00</strong></div>
+                    <div class="workflow-submit-row">
+                        <p class="workflow-message" id="orderMessage" role="status" aria-live="polite"></p>
+                        <button class="editor-save" type="submit">Place order</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="dashboard-view workflow-view" id="dashboard-bills" hidden>
+                <div class="workflow-heading">
+                    <img class="workflow-photo bill-photo"
+                         src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1500&q=85"
+                         alt="Customer paying at a restaurant checkout">
+                    <div class="workflow-heading-copy">
+                        <p class="eyebrow">CHECKOUT / BILLING</p>
+                        <h1>Settle the <em>table.</em></h1>
+                        <p>Generate a bill for a table with an open food order.</p>
+                    </div>
+                </div>
+                <form class="workflow-form bill-form" id="billForm">
+                    <label for="billTable">Occupied table
+                        <select id="billTable" required></select>
+                    </label>
+                    <div class="workflow-submit-row">
+                        <p class="workflow-message" id="billMessage" role="status" aria-live="polite"></p>
+                        <button class="editor-save" type="submit">Generate bill</button>
+                    </div>
+                </form>
+                <section class="bill-result" id="billResult" aria-live="polite" hidden>
+                    <p class="eyebrow">BILL READY</p>
+                    <h2 id="billTotal">₹0.00</h2>
+                    <p id="billDetails"></p>
+                </section>
+            </section>
+
+            <footer class="workspace-footer"><span>TABLETURN / SERVICE DESK</span><span>HAVE A GOOD SERVICE</span></footer>
+        </div>
+            </div>
+    </main>
+    <script src="script.js" defer></script>
+</body>
+</html>
